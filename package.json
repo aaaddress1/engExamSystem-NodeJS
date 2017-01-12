@@ -21,16 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aaaddress1/isuSurvey-NodeJS.git"
+    "url": "git+https://github.com/aaaddress1/engExamSystem-NodeJS.git"
   },
   "keywords": [
-    "isu",
-    "survey"
   ],
   "author": "aaaddress1 <aaaddress1@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aaaddress1/isuSurvey-NodeJS/issues"
+    "url": "https://github.com/aaaddress1/engExamSystem-NodeJS/issues"
   },
-  "homepage": "https://github.com/aaaddress1/isuSurvey-NodeJS#readme"
+  "homepage": "https://github.com/aaaddress1/engExamSystem-NodeJS#readme"
 }
