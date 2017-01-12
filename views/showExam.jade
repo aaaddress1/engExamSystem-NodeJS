@@ -1,0 +1,52 @@
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+link(rel='stylesheet', href='http://fonts.googleapis.com/earlyaccess/cwtexhei.css')
+link(rel='stylesheet', href='http://fonts.googleapis.com/earlyaccess/cwtexming.css')
+link(href='https://bootswatch.com/darkly/bootstrap.css', rel='stylesheet')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js')
+head
+
+  style(type='text/css').
+    iframe {
+      font-size: 25px;
+      width: 100% !important;
+      height: 75% !important;
+      color:white;
+      vertical-align: middle;
+      background-color: transparent;
+    }
+
+body
+  script.
+    function replyAnser() {
+      var iframe = document.getElementById("examTextArea");
+      var usrAns = iframe.contentWindow.document.body.innerText;
+      document.rplyForm.usrAns.value = usrAns;
+      document.rplyForm.submit();     
+    }
+
+  div(class ='panel panel',style='position: absolute; left: 5%; top: 10%; width: 90%; height: 80%; ')
+    div(class='panel-heading') 
+      h1(class='panel-title')
+        | Simple Exam
+
+    div(class='panel-body')
+      center
+        form(action='/examData', name='rplyForm', method= 'POST')
+          iframe#examTextArea(name='examTextArea' frameBorder='0')
+          div.input
+            input(class= "form-control", type="hidden", value= '', name='usrAns')
+
+          |右鍵可選擇定冠詞插入
+          input.btn.btn-success.btn-block(onclick="replyAnser()",value= '答案送出') 
+
+  script.
+    var editor=window.frames['examTextArea'].document;
+    editor.open();
+    $.ajax({
+              url: '/examData',
+              success: function(data) {
+                  editor.write(data['examHtml']);
+                  editor.close();
+                  editor.designMode='on';
+              }
+    });
